@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let v of itemsList">
+      <app-items
+        [title]="v.title"
+        [content]="v.content"
+        [bgColor]="v.bgColor"
+        [state]="v.state"
+        [id]="v.id"
+      ></app-items>
+    </div>
+  </div>
+</div>

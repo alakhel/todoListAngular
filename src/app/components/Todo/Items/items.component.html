@@ -1,0 +1,66 @@
+<div
+  class="card text-white item p-1 m-2"
+  [ngStyle]="{ background: bgColor }"
+  *ngIf="!isEditMode"
+>
+  <div class="row">
+    <div class="col-md-4">
+      <h6 class="text-left" (click)="editMode(id)">
+        {{ state ? "Edit" : "Edit" }}
+      </h6>
+    </div>
+    <div class="col-md-4">
+      <h6 [ngClass]="{ 'text-center': true }" (click)="deleteOne(id)">
+        Delete
+      </h6>
+    </div>
+    <div class="col-md-4">
+      <h6 [ngClass]="{ 'text-right': true }" (click)="doneUndone(id)">
+        {{ state ? "Done" : "in Progress.." }}
+      </h6>
+    </div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title bold title">
+      <a routerLink="/item/{{ id }}">{{ title | maj }}</a>
+    </h4>
+    <p (click)="editMode(id)" class="card-text">{{ content }}</p>
+  </div>
+</div>
+<div
+  *ngIf="isEditMode"
+  class="card text-white item p-1 m-2"
+  [ngStyle]="{ background: bgColor }"
+>
+  <div class="row">
+    <div class="col-md-6">
+      <h6 class="text-left" (click)="saveEditMode(id)">
+        {{ isEditMode ? "Save" : "Edit" }}
+      </h6>
+    </div>
+    <div class="col-md-6">
+      <h6 [ngClass]="{ 'text-right': true }" (click)="doneUndone(id)">
+        {{ state ? "Done" : "in Progress.." }}
+      </h6>
+    </div>
+  </div>
+  <form>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control title bold"
+        name="title"
+        id="title"
+        [(ngModel)]="title"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        name="content"
+        [(ngModel)]="content"
+      />
+    </div>
+  </form>
+</div>

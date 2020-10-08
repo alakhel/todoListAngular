@@ -1,0 +1,59 @@
+<div class="container">
+  <form autocomplete="off">
+    <div class="col-md-12 itemInput" style="background-color: {{ itemColor }};">
+      <div class="form-group" *ngIf="fullMode">
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="form-control"
+          placeholder="Title"
+          [(ngModel)]="itemTitle"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          (focus)="switchFullMode()"
+          type="text"
+          name="content"
+          class="form-control"
+          placeholder="new task..."
+          [(ngModel)]="itemContent"
+        />
+      </div>
+      <div class="form-row  align-items-center" *ngIf="fullMode">
+        <div class="col">
+          <label for="color">color:</label>
+          <input
+            type="text"
+            id="color"
+            name="color"
+            class="form-control"
+            value="{{ itemColor }}"
+            [(ngModel)]="itemColor"
+          />
+        </div>
+        <div class="col">
+          <div class="custom-control custom-checkbox">
+            <input
+              name="state"
+              type="checkbox"
+              class="custom-control-input"
+              id="customCheck"
+              [(ngModel)]="itemState"
+            />
+            <label class="custom-control-label" for="customCheck">done</label>
+          </div>
+        </div>
+        <div class="col">
+          <input
+            type="submit"
+            class="form-control btn"
+            (click)="addItem()"
+            value="add"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
